@@ -2,12 +2,12 @@
   <div class="quiz-container">
     <h1 class="title">{{ quizData.name }}</h1>
 
-  
+    <!-- Progress bar -->
     <div v-if="currentQuestion < quizData.questions.length" class="progress-wrapper">
       <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
     </div>
 
-
+    <!-- Questions -->
     <div v-if="currentQuestion < quizData.questions.length" class="question-block">
       <h2 class="question-title">
         {{ currentQuestion + 1 }} / {{ quizData.questions.length }}
@@ -15,58 +15,91 @@
       </h2>
 
       <div class="options">
-        <button v-for="(option, index) in quizData.questions[currentQuestion].options" :key="index" class="option-btn"
-          @click="selectAnswer(option.type)">
+        <button
+          v-for="(option, index) in quizData.questions[currentQuestion].options"
+          :key="index"
+          class="option-btn"
+          @click="selectAnswer(option.type)"
+        >
           {{ String.fromCharCode(65 + index) }}. {{ option.label }}
         </button>
       </div>
     </div>
 
-
+    <!-- Result Section -->
     <div v-else class="result-block">
-      <h2 class="result-title">🎉 Your Result 🎉</h2>
+      <h2 class="result-title flex items-center justify-center gap-2">
+        <PartyPopperIcon class="w-6 h-6 text-purple-600" />
+        Your Result
+        <PartyPopperIcon class="w-6 h-6 text-purple-600" />
+      </h2>
 
       <div class="answer-counts">
+        <!-- Tie -->
         <template v-if="answers.satisfier === answers.maximizer">
-          <h3 class="tie-text">🤝 It's a Tie!</h3>
+          <h3 class="tie-text flex items-center justify-center gap-2">
+            <HandshakeIcon class="w-5 h-5 text-yellow-500" />
+            It's a Tie!
+          </h3>
           <p>Satisfier answers: {{ answers.satisfier }}</p>
           <p>Maximizer answers: {{ answers.maximizer }}</p>
         </template>
 
+        <!-- Winner -->
         <template v-else>
-          <h3 class="result-name" :class="resultData.name === 'The Satisfier' ? 'satisfier' : 'maximizer'">
-            {{ resultData.name }}
-          </h3>
-          <p class="description">{{ resultData.description }}</p>
-          <p v-if="resultData.name === quizData.types.satisfier.name">
-            ✅ You chose Satisfier answers <strong>{{ answers.satisfier }}</strong> times
-          </p>
-          <p v-else>
-            ✅ You chose Maximizer answers <strong>{{ answers.maximizer }}</strong> times
-          </p>
+          <div class="flex flex-col items-center">
+            <component
+              :is="resultData.icon === 'satisfier' ? SmileIcon : RocketIcon"
+              class="w-8 h-8 text-purple-600 mb-2"
+            />
+            <h3 class="result-name" :class="resultData.name === 'The Satisfier' ? 'satisfier' : 'maximizer'">
+              {{ resultData.name }}
+            </h3>
+            <p class="description">{{ resultData.description }}</p>
+            <p v-if="resultData.name === quizData.types.satisfier.name" style="display: flex; align-items: center; justify-content: center; gap: 2px;">
+              <CheckCircleIcon class="w-5 h-4 text-green-500" />
+              You chose Satisfier answers <strong>{{ answers.satisfier }}</strong> times
+            </p>
+            <p v-else style="display: flex; align-items: center; justify-content: center; gap: 2px;">
+              <CheckCircleIcon class="w-5 h-4 text-green-500" />
+              You chose Maximizer answers <strong>{{ answers.maximizer }}</strong> times
+            </p>
+          </div>
         </template>
       </div>
 
-      <button class="restart-btn" @click="restartQuiz">🔄 Restart Quiz</button>
+      <!-- Restart -->
+      <button class="restart-btn flex items-center justify-center gap-2" @click="restartQuiz">
+        <RotateCcwIcon class="w-5 h-5" />
+        Restart Quiz
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref, computed } from "vue";
+import {
+  PartyPopperIcon,
+  HandshakeIcon,
+  CheckCircleIcon,
+  RotateCcwIcon,
+  SmileIcon,
+  RocketIcon,
+} from "lucide-vue-next";
 
 const quizData = {
   name: "What kind of decision maker are you?",
   types: {
     satisfier: {
       name: "The Satisfier",
-      description:
-        "😊 A satisfier is someone who is content with 'good enough' and makes decisions quickly.",
+      description: "A satisfier is someone who is content with 'good enough' and makes decisions quickly.",
+      icon: "satisfier",
     },
     maximizer: {
       name: "The Maximizer",
-      description:
-        "🚀 A maximizer is someone who strives to make the best possible choice by exploring all options.",
+      description: "A maximizer is someone who strives to make the best possible choice by exploring all options.",
+      icon: "maximizer",
     },
   },
   questions: [
@@ -180,7 +213,6 @@ const progressPercent = computed(() => {
   animation: fadeIn 0.7s ease-in-out;
 }
 
-
 .title {
   font-size: 30px;
   font-weight: 700;
@@ -189,7 +221,6 @@ const progressPercent = computed(() => {
   -webkit-text-fill-color: transparent;
   margin-bottom: 25px;
 }
-
 
 .progress-wrapper {
   background: #f1f5f9;
@@ -205,7 +236,6 @@ const progressPercent = computed(() => {
   transition: width 0.4s ease-in-out;
 }
 
-
 .question-title {
   font-size: 18px;
   font-weight: 600;
@@ -220,7 +250,6 @@ const progressPercent = computed(() => {
   color: #111827;
   margin-top: 6px;
 }
-
 
 .options {
   display: flex;
@@ -245,7 +274,6 @@ const progressPercent = computed(() => {
   background: linear-gradient(135deg, #4338ca, #9333ea, #db2777);
   box-shadow: 0 6px 18px rgba(168, 85, 247, 0.4);
 }
-
 
 .result-block {
   margin-top: 20px;
@@ -284,7 +312,6 @@ const progressPercent = computed(() => {
   color: #f59e0b;
 }
 
-
 .restart-btn {
   margin-top: 25px;
   padding: 14px 28px;
@@ -296,14 +323,16 @@ const progressPercent = computed(() => {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  margin: auto;
 }
 
 .restart-btn:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: translateY(-1px) scale(1.05);
   background: linear-gradient(135deg, #059669, #047857);
   box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
 }
-
 
 @keyframes fadeIn {
   from {
