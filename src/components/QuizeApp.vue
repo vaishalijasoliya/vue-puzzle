@@ -1,5 +1,6 @@
 <template>
-  <div class="quiz-container">
+  <div style="padding: 60px">
+  <div  class="quiz-container">
     <h1 class="title">{{ quizData.name }}</h1>
 
     <!-- Progress bar -->
@@ -74,6 +75,7 @@
         Restart Quiz
       </button>
     </div>
+  </div>
   </div>
 </template>
 
