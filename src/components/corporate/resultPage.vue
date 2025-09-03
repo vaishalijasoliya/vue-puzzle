@@ -1,60 +1,58 @@
 <template>
-    <v-container>
+    <v-card style="position: relative;" elevation="6">
+        <v-card class="question-box" elevation="4" style="position: relative; overflow: hidden">
+            <div class="card-bg" :style="{ background: quizData.gradient }"></div>
+            <div class="result-page d-flex flex-column align-center justify-center"
+                style="position: relative; z-index: 1">
+                <!-- Correct Answers -->
+                <v-chip color="deep-purple-accent-4" text-color="white"
+                    class="mb-16 font-weight-bold px-6 py-4 correct-chip">
+                    Correct Answer {{ correctCount }}/{{ totalQuestions }}
+                </v-chip>
 
-        <v-card class="mb-6" style="position: relative;" elevation="6">
-            <v-card class="question-box " elevation="4" style="position: relative; overflow: hidden">
-                <div class="card-bg" :style="{ background: quizData.gradient }"></div>
-                <div class="result-page d-flex flex-column align-center justify-center"
-                    style="position: relative; z-index: 1">
-
-                    <v-chip color="deep-purple-accent-4" text-color="white"
-                        class="mb-16 font-weight-bold px-6 py-4 correct-chip">
-                        Correct Answer {{ correctCount }}/{{ totalQuestions }}
-                    </v-chip>
-                    <v-card class="rank-card text-center pa-8 animate-card" elevation="12">
-                        <!-- Ribbon with Glow -->
-                        <div class="ribbon glow">
-                            <v-avatar size="90" class="avatar-shadow">
-                                <v-img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" />
-                            </v-avatar>
-                        </div>
-
-                        <!-- User Info -->
-                        <h2 class="name mt-8">{{ userName }}</h2>
-                        <p class="rank-label">Rank</p>
-
-                        <!-- Animated Rank -->
-                        <h1 class="rank-number">{{ animatedRank }}</h1>
-                    </v-card>
-                    <div class="text-center mt-10 px-6">
-                        <h2 class="font-weight-bold mb-2">🎉 Congratulations!</h2>
-                        <p class="subtitle">You've completed this quiz.<br>Keep testing your knowledge by playing more
-                            quizzes!</p>
+                <!-- Rank Card -->
+                <v-card class="rank-card text-center pa-8 animate-card" elevation="12">
+                    <!-- Ribbon with Glow -->
+                    <div class="ribbon glow">
+                        <v-avatar size="90" class="avatar-shadow">
+                            <v-img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" />
+                        </v-avatar>
                     </div>
 
-                    <!-- Explore Button -->
-                    <v-btn size="x-large" class="mt-8 px-10 explore-btn" elevation="8">
-                        Explore More
-                    </v-btn>
+                    <!-- User Info -->
+                    <h2 class="name mt-8">{{ userName }}</h2>
+                    <p class="rank-label">{{ rankLabel }}</p>
+
+                    <!-- Animated Rank -->
+                    <h1 class="rank-number">{{ animatedRank }}</h1>
+                </v-card>
+
+                <!-- Congrats Message -->
+                <div class="text-center mt-10 px-6">
+                    <h2 class="font-weight-bold mb-2">🎉 Congratulations!</h2>
+                    <p class="subtitle">
+                        You've completed this quiz.<br />Keep testing your knowledge by playing more quizzes!
+                    </p>
                 </div>
-            </v-card>
+
+
+                <BaseButton class="mt-8 px-10">
+                    Explore More
+                </BaseButton>
+            </div>
         </v-card>
-
-        <!-- Badge Card -->
-
-
-        <!-- Congratulation Message -->
-
-    </v-container>
+    </v-card>
 </template>
 
 <script setup>
 import { ref, onMounted, computed, defineProps } from "vue"
+import { BaseButton } from "../ui/baseButton"
 
 const props = defineProps({
     answers: { type: Array, required: true },
-    quizData: { type: Object, required: true }
+    quizData: { type: Object, required: true },
 })
+
 const allQuestions = computed(() => props.quizData.quiz || [])
 
 // Count correct answers
@@ -66,20 +64,31 @@ const correctCount = computed(() =>
 
 const totalQuestions = allQuestions.value.length
 const userName = ref("Roxane")
-const rank = ref(432)
+const rank = computed(() => correctCount.value)
 const animatedRank = ref(0)
 
+
+const rankLabel = computed(() => {
+    if (correctCount.value === totalQuestions) {
+        return "🌟 Excellent!"
+    } else if (correctCount.value < 5) {
+        return "⚡ Needs Improvement"
+    } else {
+        return "✅ Good Job"
+    }
+})
+
 onMounted(() => {
-    let count = 0
-    const interval = setInterval(() => {
-        if (count < rank.value) {
-            count += 5
-            animatedRank.value = count
-        } else {
-            animatedRank.value = rank.value
-            clearInterval(interval)
-        }
-    }, 20)
+  let count = 0
+  const interval = setInterval(() => {
+    if (count < rank.value) {
+      count += 1  
+      animatedRank.value = count
+    } else {
+      animatedRank.value = rank.value
+      clearInterval(interval)
+    }
+  }, 100) 
 })
 </script>
 
@@ -89,7 +98,6 @@ onMounted(() => {
     inset: 0;
     opacity: 0.35;
     z-index: 0;
-    /* border-radius: 20px; */
 }
 
 .question-box {
@@ -99,17 +107,14 @@ onMounted(() => {
 }
 
 .result-page {
-    /* min-height: 100vh; */
     padding: 32px;
 }
 
-/* Ensure chip stays visible */
 .correct-chip {
     z-index: 10;
     position: relative;
 }
 
-/* Card Styling */
 .rank-card {
     border-radius: 28px;
     width: 100%;
@@ -122,7 +127,6 @@ onMounted(() => {
     animation: slideUp 0.8s ease forwards;
 }
 
-/* Ribbon Glow */
 .ribbon {
     position: absolute;
     top: -50px;
@@ -144,7 +148,6 @@ onMounted(() => {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Text Styles */
 .name {
     font-weight: 700;
     font-size: 1.4rem;
@@ -166,14 +169,12 @@ onMounted(() => {
     -webkit-text-fill-color: transparent;
 }
 
-/* Subtitle */
 .subtitle {
     opacity: 0.9;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-/* Fancy Button */
 .explore-btn {
     border-radius: 50px;
     background: linear-gradient(90deg, #ff8a00, #e52e71);
@@ -187,7 +188,6 @@ onMounted(() => {
     transform: translateY(-2px);
 }
 
-/* Animations */
 @keyframes slideUp {
     from {
         transform: translateY(30px);
