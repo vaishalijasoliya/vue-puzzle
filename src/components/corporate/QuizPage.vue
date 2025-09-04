@@ -16,11 +16,7 @@
 
       <div v-if="data?.quiz?.length" class="quiz-container pa-6">
         <v-card class="mb-6 pa-6 question-card" style="position: relative;" elevation="6">
-          <v-card
-            class="question-box mb-6"
-            elevation="4"
-            style="position: relative; overflow: hidden;"
-          >
+          <v-card class="question-box mb-6" elevation="4" style="position: relative; overflow: hidden;">
             <div class="card-bg" :style="{ background: data.gradient }"></div>
             <div class="text-center pa-6" style="position: relative; z-index: 1;">
               <h3 class="question-text">
@@ -31,44 +27,25 @@
 
           <!-- Timer -->
           <div class="d-flex align-center justify-space-between mb-4" style="gap: 10px;">
-            <v-progress-linear
-              :model-value="progressValue"
-              height="10"
-              color="deep-orange"
-              rounded
-              striped
-            />
+            <v-progress-linear :model-value="progressValue" height="10" color="deep-orange" rounded striped />
             <span class="time-text">{{ formattedTime }}</span>
           </div>
 
           <!-- Options -->
           <div class="d-flex flex-column mb-8" style="gap: 12px;">
-            <v-card
-              v-for="(opt, j) in currentQuestion.options"
-              :key="j"
-              class="option-card"
-              :class="optionClass(j)"
-              @click="selectOption(j)"
-              elevation="3"
-            >
+            <v-card v-for="(opt, j) in currentQuestion.options" :key="j" class="option-card" :class="optionClass(j)"
+              @click="selectOption(j)" elevation="3">
               <div class="d-flex align-center pa-4">
                 <span class="option-text">
                   {{ String.fromCharCode(65 + j) }}. {{ opt }}
                 </span>
                 <v-spacer />
                 <!-- Icons -->
-                <v-icon
-                  v-if="answers[currentIndex] !== undefined && j === currentQuestion.answer"
-                  color="teal"
-                  size="28"
-                >
+                <v-icon v-if="answers[currentIndex] !== undefined && j === currentQuestion.answer" color="teal"
+                  size="28">
                   mdi-check-circle
                 </v-icon>
-                <v-icon
-                  v-else-if="answers[currentIndex] === j && j !== currentQuestion.answer"
-                  color="red"
-                  size="28"
-                >
+                <v-icon v-else-if="answers[currentIndex] === j && j !== currentQuestion.answer" color="red" size="28">
                   mdi-close-circle
                 </v-icon>
               </div>
@@ -77,11 +54,7 @@
 
           <!-- Buttons -->
           <v-row justify="center" style="gap: 10px;" class="mt-8">
-            <baseButton
-              v-if="showAddTime"
-              :disabled="timeLeft > 0 || usedAddTime[currentIndex]"
-              @click="addTime"
-            >
+            <baseButton v-if="showAddTime" :disabled="timeLeft > 0 || usedAddTime[currentIndex]" @click="addTime">
               Add Time
             </baseButton>
 
@@ -89,11 +62,8 @@
               Previous
             </baseButton>
 
-            <baseButton
-              v-if="currentIndex < data.quiz.length - 1"
-              :disabled="answers[currentIndex] === undefined"
-              @click="nextQuestion"
-            >
+            <baseButton v-if="currentIndex < data.quiz.length - 1" :disabled="answers[currentIndex] === undefined"
+              @click="nextQuestion">
               Next →
             </baseButton>
 
@@ -112,7 +82,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue"
+import { ref, computed, onMounted, onBeforeUnmount, watch, defineProps } from "vue"
 import { BaseButton } from "../ui/baseButton"
 import ResultPage from "./resultPage.vue"
 
@@ -130,12 +100,13 @@ const usedAddTime = ref([])
 const submitted = ref(false)
 
 const data = computed(() => {
-  if (props.quizData) {
-    return props.quizData
-  }
+  return props.quizData ?? { quiz: [] }
 })
 
-const currentQuestion = computed(() => data.value.quiz[currentIndex.value] || {})
+// const currentQuestion = computed(() => data.value.quiz[currentIndex.value] || {})
+const currentQuestion = computed(() => {
+  return data.value?.quiz?.[currentIndex.value] ?? {}
+})
 
 const defaultTime = 59
 const timeLeft = ref(defaultTime)
