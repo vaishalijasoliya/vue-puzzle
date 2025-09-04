@@ -36,7 +36,7 @@
                 </div>
 
 
-                <BaseButton class="mt-8 px-10">
+                <BaseButton @click="goNext" class="mt-8 px-10">
                     Explore More
                 </BaseButton>
             </div>
@@ -47,6 +47,12 @@
 <script setup>
 import { ref, onMounted, computed, defineProps } from "vue"
 import { BaseButton } from "../ui/baseButton"
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const goNext = () => {
+    router.push("/optionsPage");
+};
 
 const props = defineProps({
     answers: { type: Array, required: true },
