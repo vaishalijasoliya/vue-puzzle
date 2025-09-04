@@ -15,7 +15,7 @@
                     Complete the quiz to get a detailed report of your performance and challenge
                     yourself to achieve more.
                 </p>
-                <baseButton style="display: block;" @click="goNext">Next →</BaseButton>
+                <BaseButton style="display: block;" @click="goNext">Next →</BaseButton>
 
             </v-col>
         </v-row>

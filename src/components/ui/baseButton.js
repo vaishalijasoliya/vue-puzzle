@@ -9,11 +9,14 @@ export const BaseButton = defineComponent({
       {
         style: {
           color: "#fff",
-          background:"linear-gradient(90deg, #ff5900, #ff8e42)"
-          // background: "radial-gradient(circle at left center, #AA3000 0%, #FE5900 50%, #FF9257 100%)",
+          background: "linear-gradient(90deg, #ff5900, #ff8e42)",
         },
+        onClick: this.$attrs.onClick, 
       },
-      this.$slots.default?.());
+      {
+        default: () => this.$slots.default?.() || [], // ✅ wrap as function
+      }
+    );
   },
 });
 
@@ -22,7 +25,7 @@ export const TextButton = defineComponent({
   props: {
     color: {
       type: String,
-      default: "#ff0000", 
+      default: "#ff0000",
     },
   },
   render() {
@@ -34,15 +37,15 @@ export const TextButton = defineComponent({
           border: `1px solid ${this.color}`,
           padding: "5px 10px",
           width: "100%",
-          // borderRadius: "10px",
           fontWeight: "400",
           fontSize: "14px",
-           ":hover": { background: "red", boxShadow: "none", }
         },
         variant: "text",
+        ...this.$attrs, 
       },
-      this.$slots.default?.()
+      {
+        default: () => this.$slots.default?.() || [], 
+      }
     );
   },
 });
-
