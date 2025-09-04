@@ -113,7 +113,6 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue"
-import { useRoute } from "vue-router"
 import { BaseButton } from "../ui/baseButton"
 import ResultPage from "./resultPage.vue"
 
@@ -125,7 +124,6 @@ const props = defineProps({
   }
 })
 
-const route = useRoute()
 const answers = ref([])
 const currentIndex = ref(0)
 const usedAddTime = ref([])
@@ -202,11 +200,11 @@ function nextQuestion() {
   }
 }
 
-function skipQuestion() {
-  if (currentIndex.value < data.value.quiz.length - 1) {
-    currentIndex.value++
-  }
-}
+// function skipQuestion() {
+//   if (currentIndex.value < data.value.quiz.length - 1) {
+//     currentIndex.value++
+//   }
+// }
 
 function prevQuestion() {
   if (currentIndex.value > 0) {
