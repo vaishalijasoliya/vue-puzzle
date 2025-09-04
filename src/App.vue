@@ -1,17 +1,13 @@
 <template>
-  
-  <!-- <QuizeApp /> -->
   <router-view />
 </template>
 
 <script>
 
-// import QuizeApp from './components/QuizeApp.vue';
 
 export default {
   name: 'App',
   components: {
-    // QuizeApp,
   }
 }
 </script>

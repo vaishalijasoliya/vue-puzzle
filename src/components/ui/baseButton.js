@@ -14,7 +14,7 @@ export const BaseButton = defineComponent({
         onClick: this.$attrs.onClick, 
       },
       {
-        default: () => this.$slots.default?.() || [], // ✅ wrap as function
+        default: () => this.$slots.default?.() || [], 
       }
     );
   },

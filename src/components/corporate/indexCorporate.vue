@@ -15,7 +15,7 @@
       <v-row>
         <v-col v-for="(topic, i) in filteredTopics" :key="i" cols="12" sm="6" md="4" lg="3">
           <v-hover v-slot="{ isHovering, props }">
-            <v-card v-bind="props" class="topic-card" :elevation="isHovering ? 12 : 6" @click="goTo(topic)">
+            <v-card v-bind="props" class="topic-card" :elevation="isHovering ? 12 : 6">
               <div class="card-bg" :style="{ background: topic.gradient }" />
 
               <div class="card-content">
@@ -472,10 +472,6 @@ const filteredTopics = computed(() =>
 
 function startQuiz(topic) {
   selectedTopic.value = topic
-}
-
-function goTo(topic) {
-  console.log('Open topic details:', topic.title)
 }
 </script>
 

@@ -55,7 +55,7 @@ const props = defineProps({
 
 const allQuestions = computed(() => props.quizData.quiz || [])
 
-// Count correct answers
+
 const correctCount = computed(() =>
     allQuestions.value.reduce((acc, q, i) => {
         return acc + (props.answers[i] === q.answer ? 1 : 0)

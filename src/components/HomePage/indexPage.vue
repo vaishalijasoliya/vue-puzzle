@@ -1,6 +1,5 @@
 <template>
     <div class="bg">
-        <!-- <v-container class="d-flex justify-center align-center"> -->
         <v-row class="d-flex justify-center align-center " style="min-height: 100vh;margin: 0px;">
 
 
@@ -19,7 +18,6 @@
 
             </v-col>
         </v-row>
-        <!-- </v-container> -->
     </div>
 </template>
 
@@ -48,18 +46,15 @@ const goNext = () => {
     background-color: #000;
 }
 
-/* Make left col full height */
+
 .gif-col {
     height: 100vh;
-    /* full viewport height */
     display: flex;
     padding: 0;
-    /* remove padding */
 }
 
 .gif-full {
     width: 100%;
     height: 100%;
-    /* object-fit: cover; fills completely */
 }
 </style>

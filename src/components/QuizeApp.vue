@@ -1,14 +1,12 @@
-<template>
+<!-- <template>
   <div style="padding: 60px">
   <div  class="quiz-container">
     <h1 class="title">{{ quizData.name }}</h1>
 
-    <!-- Progress bar -->
     <div v-if="currentQuestion < quizData.questions.length" class="progress-wrapper">
       <div class="progress-bar" :style="{ width: progressPercent + '%' }"></div>
     </div>
 
-    <!-- Questions -->
     <div v-if="currentQuestion < quizData.questions.length" class="question-block">
       <h2 class="question-title">
         {{ currentQuestion + 1 }} / {{ quizData.questions.length }}
@@ -27,7 +25,6 @@
       </div>
     </div>
 
-    <!-- Result Section -->
     <div v-else class="result-block">
       <h2 class="result-title flex items-center justify-center gap-2">
         <PartyPopperIcon class="w-6 h-6 text-purple-600" />
@@ -36,7 +33,7 @@
       </h2>
 
       <div class="answer-counts">
-        <!-- Tie -->
+   
         <template v-if="answers.satisfier === answers.maximizer">
           <h3 class="tie-text flex items-center justify-center gap-2">
             <HandshakeIcon class="w-5 h-5 text-yellow-500" />
@@ -46,7 +43,7 @@
           <p>Maximizer answers: {{ answers.maximizer }}</p>
         </template>
 
-        <!-- Winner -->
+   
         <template v-else>
           <div class="flex flex-col items-center">
             <component
@@ -69,7 +66,7 @@
         </template>
       </div>
 
-      <!-- Restart -->
+      
       <button class="restart-btn flex items-center justify-center gap-2" @click="restartQuiz">
         <RotateCcwIcon class="w-5 h-5" />
         Restart Quiz
@@ -347,4 +344,4 @@ const progressPercent = computed(() => {
     transform: translateY(0);
   }
 }
-</style>
+</style> -->

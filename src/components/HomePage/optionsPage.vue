@@ -54,19 +54,17 @@ const goNext = () => {
 </script>
 
 <style scoped>
-/* Background */
+
 .bg {
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a 40%, #2c0a00 100%);
   color: white;
 }
 
-/* Glass effect box */
+
 .content-box {
   padding: 40px;
   border-radius: 20px;
-  /* background: rgba(255, 255, 255, 0.05); */
   backdrop-filter: blur(10px);
-  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); */
 }
 
 /* Gradient heading */
@@ -78,15 +76,6 @@ const goNext = () => {
   -webkit-text-fill-color: transparent;
   margin-bottom: 30px;
 }
-
-/* Button hover effects */
-/* .btn-animated {
-  font-size: 18px;
-  font-weight: 600;
-  padding: 12px 20px !important;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
-} */
 .btn-animated:hover {
   background: linear-gradient(90deg, #ff5900, #ff8e42);
   color: #fff !important;
@@ -94,7 +83,6 @@ const goNext = () => {
   box-shadow: 0 8px 20px rgba(255, 100, 0, 0.2);
 }
 
-/* Image column */
 .gif-col {
   height: 100vh;
   display: flex;
@@ -109,7 +97,6 @@ const goNext = () => {
   max-width: 550px;
 }
 
-/* Floating animation */
 .floating {
   animation: float 4s ease-in-out infinite;
 }
