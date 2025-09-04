@@ -8,7 +8,6 @@
 
 // import QuizeApp from './components/QuizeApp.vue';
 
-
 export default {
   name: 'App',
   components: {
