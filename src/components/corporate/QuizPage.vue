@@ -185,7 +185,10 @@ function prevQuestion() {
 
 function submitQuiz() {
   clearInterval(timer)
-  submitted.value = true
+  if (answers.value[currentIndex.value] !== undefined) {
+
+    submitted.value = true
+  }
 }
 
 // Reset timer each question

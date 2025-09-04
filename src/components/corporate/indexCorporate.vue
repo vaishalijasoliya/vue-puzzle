@@ -64,71 +64,105 @@ const topics = ref([
       'linear-gradient(135deg, rgba(85,60,255,1) 0%, rgba(147,112,255,1) 45%, rgba(255,153,102,1) 100%)',
     quiz: [
       {
-        q: 'What is included in company compliance?',
-        options: ['Adhering to laws & regulations', 'Choosing cafeteria menu', 'Personal hobbies', 'Weekend events'],
+        q: 'You are assigned a high-pressure task with a short deadline. How do you react first?',
+        options: [
+          'Break it down into smaller steps',
+          'Panic and feel overwhelmed',
+          'Delay and hope deadline is extended',
+          'Immediately ask someone else to do it'
+        ],
         answer: 0
       },
       {
-        q: 'Which benefit is mandatory in most companies?',
-        options: ['Health Insurance', 'Gym Membership', 'Free Snacks', 'Paid Parking'],
-        answer: 0
-      },
-      {
-        q: 'If you receive a suspicious email asking for login details, what should you do?',
-        options: ['Click and reply', 'Ignore and delete', 'Report to IT/security team', 'Forward to colleagues'],
-        answer: 2
-      },
-      {
-        q: 'Which document outlines employee rights, leave policies, and workplace rules?',
-        options: ['Company Handbook', 'Annual Report', 'Meeting Notes', 'Press Release'],
-        answer: 0
-      },
-      {
-        q: 'What should you do before sharing confidential data?',
-        options: ['Ensure recipient is authorized', 'Upload on social media', 'Save on personal USB', 'Discuss in cafeteria'],
-        answer: 0
-      },
-      {
-        q: 'What is considered a violation of workplace security?',
-        options: ['Locking your screen when away', 'Sharing your password', 'Wearing ID badge', 'Using company VPN'],
-        answer: 1
-      },
-      {
-        q: 'If you witness workplace harassment, what is the correct action?',
-        options: ['Ignore it', 'Confront aggressively', 'Report via official channels/HR', 'Post it online'],
-        answer: 2
-      },
-      {
-        q: 'What is the purpose of compliance training?',
-        options: ['To understand company logo design', 'To follow laws, policies & ethical standards', 'To improve weekend trips', 'To manage office decor'],
-        answer: 1
-      },
-      {
-        q: 'Which of the following is usually part of employee benefits?',
-        options: ['Health coverage', 'Stock options', 'Paid leave', 'All of the above'],
+        q: 'During a heated meeting, a colleague strongly disagrees with you. What is your response?',
+        options: [
+          'Raise your voice to prove your view',
+          'Ignore their opinion completely',
+          'Walk out of the discussion',
+          'Listen and calmly explain your point'
+        ],
         answer: 3
       },
       {
-        q: 'What is two-factor authentication (2FA) used for?',
-        options: ['Faster browsing', 'Stronger account security', 'Sharing files easily', 'Office Wi-Fi connection'],
+        q: 'If you make a mistake in an important report, what is the best action?',
+        options: [
+          'Blame a colleague',
+          'Ignore it and hope no one notices',
+          'Delete the report entirely',
+          'Take responsibility and correct it'
+        ],
+        answer: 3
+      },
+      {
+        q: 'How do you usually handle workplace stress?',
+        options: [
+          'Avoid responsibilities',
+          'React angrily at small issues',
+          'Plan and prioritize tasks',
+          'Withdraw completely from coworkers'
+        ],
+        answer: 2
+      },
+      {
+        q: 'When working in a team project, what role do you often take?',
+        options: [
+          'Silent observer who avoids input',
+          'Collaborator who balances tasks',
+          'Controller who ignores others',
+          'Distractor who derails progress'
+        ],
         answer: 1
       },
       {
-        q: 'Which of these actions helps maintain data security?',
-        options: ['Using strong unique passwords', 'Sharing accounts with coworkers', 'Writing password on sticky notes', 'Using open Wi-Fi networks'],
-        answer: 0
+        q: 'You receive constructive criticism from your manager. How do you feel?',
+        options: [
+          'Defensive and upset',
+          'Indifferent and ignore it',
+          'Grateful for improvement feedback',
+          'Angry and retaliate later'
+        ],
+        answer: 2
       },
       {
-        q: 'Why are company policies on social media important?',
-        options: ['To protect brand reputation', 'To restrict personal life', 'To increase memes posting', 'To reduce followers'],
-        answer: 0
+        q: 'When facing a complex problem, what’s your natural approach?',
+        options: [
+          'Give up quickly',
+          'Guess without thinking',
+          'Wait for someone else to solve it',
+          'Analyze it step by step'
+        ],
+        answer: 3
       },
       {
-        q: 'What should you check before signing official company documents?',
-        options: ['Legal terms and your obligations', 'Font style used', 'Color of ink', 'Page numbers only'],
-        answer: 0
+        q: 'If a coworker seems unusually quiet and upset, what would you do?',
+        options: [
+          'Spread gossip about them',
+          'Tell them to stop being emotional',
+          'Check in respectfully and offer support',
+          'Ignore them completely'
+        ],
+        answer: 2
       },
-
+      {
+        q: 'Which trait best describes your workplace personality?',
+        options: [
+          'Highly reactive to small changes',
+          'Avoidant of challenges',
+          'Argumentative in most situations',
+          'Adaptable and calm under pressure'
+        ],
+        answer: 3
+      },
+      {
+        q: 'What motivates you most at work?',
+        options: [
+          'Fear of failure',
+          'Growth and learning opportunities',
+          'Avoiding responsibility',
+          'External rewards only'
+        ],
+        answer: 1
+      }
     ],
   },
   {
@@ -218,7 +252,7 @@ const topics = ref([
           'Focus only on mistakes',
           'Ignore positive contributions'
         ],
-        answer:1
+        answer: 1
       },
       {
         q: 'Which of the following is NOT a good practice for business communication?',
@@ -250,107 +284,107 @@ const topics = ref([
     estimated: '7–9 mins',
     gradient:
       'linear-gradient(135deg, rgba(255,94,98,1) 0%, rgba(255,149,0,1) 50%, rgba(255,206,86,1) 100%)',
-      quiz: [
-    {
-      q: 'Which of the following is a key aspect of workplace ethics?',
-      options: [
-        'Respecting colleagues',
-        'Ignoring company rules',
-        'Favoritism in promotions',
-        'Gossiping about coworkers'
-      ],
-      answer: 0
-    },
-    {
-      q: 'What is the best response if you witness workplace harassment?',
-      options: [
-        'Ignore it',
-        'Report it to HR or management',
-        'Join in to fit in',
-        'Post it on social media'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Which of the following demonstrates integrity at work?',
-      options: [
-        'Taking credit for someone else’s work',
-        'Admitting mistakes honestly',
-        'Sharing confidential company data',
-        'Arriving late without notice'
-      ],
-      answer: 1
-    },
-    {
-      q: 'What is considered a conflict of interest?',
-      options: [
-        'Working with integrity',
-        'Hiring a family member without disclosure',
-        'Following company policies',
-        'Reporting unethical behavior'
-      ],
-      answer: 1
-    },
-    {
-      q: 'If you accidentally receive confidential information not meant for you, what should you do?',
-      options: [
-        'Share it with coworkers',
-        'Delete it and inform the sender',
-        'Post it online',
-        'Use it for personal gain'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Why is fairness important in workplace decisions?',
-      options: [
-        'It improves trust and teamwork',
-        'It helps only managers',
-        'It avoids following company rules',
-        'It reduces accountability'
-      ],
-      answer: 0
-    },
-    {
-      q: 'Which behavior violates workplace ethics?',
-      options: [
-        'Respecting deadlines',
-        'Discriminating against colleagues',
-        'Reporting misconduct',
-        'Treating others with respect'
-      ],
-      answer: 1
-    },
-    {
-      q: 'What should you do if you are pressured to act unethically?',
-      options: [
-        'Follow the instructions quietly',
-        'Refuse and report the situation',
-        'Ignore your values to keep your job',
-        'Blame others for the outcome'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Which of the following is part of anti-harassment policy?',
-      options: [
-        'Maintaining a safe and respectful workplace',
-        'Encouraging offensive jokes',
-        'Ignoring inappropriate behavior',
-        'Allowing favoritism'
-      ],
-      answer: 0
-    },
-    {
-      q: 'Why is integrity considered a core value at work?',
-      options: [
-        'It builds credibility and trust',
-        'It allows bending rules',
-        'It encourages favoritism',
-        'It promotes dishonesty'
-      ],
-      answer: 0
-    }
+    quiz: [
+      {
+        q: 'Which of the following is a key aspect of workplace ethics?',
+        options: [
+          'Respecting colleagues',
+          'Ignoring company rules',
+          'Favoritism in promotions',
+          'Gossiping about coworkers'
+        ],
+        answer: 0
+      },
+      {
+        q: 'What is the best response if you witness workplace harassment?',
+        options: [
+          'Ignore it',
+          'Report it to HR or management',
+          'Join in to fit in',
+          'Post it on social media'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Which of the following demonstrates integrity at work?',
+        options: [
+          'Taking credit for someone else’s work',
+          'Admitting mistakes honestly',
+          'Sharing confidential company data',
+          'Arriving late without notice'
+        ],
+        answer: 1
+      },
+      {
+        q: 'What is considered a conflict of interest?',
+        options: [
+          'Working with integrity',
+          'Hiring a family member without disclosure',
+          'Following company policies',
+          'Reporting unethical behavior'
+        ],
+        answer: 1
+      },
+      {
+        q: 'If you accidentally receive confidential information not meant for you, what should you do?',
+        options: [
+          'Share it with coworkers',
+          'Delete it and inform the sender',
+          'Post it online',
+          'Use it for personal gain'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Why is fairness important in workplace decisions?',
+        options: [
+          'It improves trust and teamwork',
+          'It helps only managers',
+          'It avoids following company rules',
+          'It reduces accountability'
+        ],
+        answer: 0
+      },
+      {
+        q: 'Which behavior violates workplace ethics?',
+        options: [
+          'Respecting deadlines',
+          'Discriminating against colleagues',
+          'Reporting misconduct',
+          'Treating others with respect'
+        ],
+        answer: 1
+      },
+      {
+        q: 'What should you do if you are pressured to act unethically?',
+        options: [
+          'Follow the instructions quietly',
+          'Refuse and report the situation',
+          'Ignore your values to keep your job',
+          'Blame others for the outcome'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Which of the following is part of anti-harassment policy?',
+        options: [
+          'Maintaining a safe and respectful workplace',
+          'Encouraging offensive jokes',
+          'Ignoring inappropriate behavior',
+          'Allowing favoritism'
+        ],
+        answer: 0
+      },
+      {
+        q: 'Why is integrity considered a core value at work?',
+        options: [
+          'It builds credibility and trust',
+          'It allows bending rules',
+          'It encourages favoritism',
+          'It promotes dishonesty'
+        ],
+        answer: 0
+      }
     ],
   },
   {
@@ -361,87 +395,87 @@ const topics = ref([
     estimated: '12–15 mins',
     gradient:
       'linear-gradient(135deg, rgba(255,0,132,1) 0%, rgba(155,89,182,1) 50%, rgba(52,152,219,1) 100%)',
-      quiz: [
-    {
-      q: 'Which leadership style focuses on empowering team members to make decisions?',
-      options: [
-        'Autocratic',
-        'Democratic',
-        'Laissez-faire',
-        'Transformational'
-      ],
-      answer: 1
-    },
-    {
-      q: 'What is the primary purpose of delegation in management?',
-      options: [
-        'Reduce the leader’s workload only',
-        'Empower employees and improve efficiency',
-        'Avoid accountability',
-        'Micromanage tasks'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Which is the most effective way to deliver constructive feedback?',
-      options: [
-        'Be vague to avoid conflict',
-        'Focus only on negatives',
-        'Provide specific examples and suggest improvements',
-        'Compare with other employees'
-      ],
-      answer: 2
-    },
-    {
-      q: 'What motivates employees the MOST in the long run?',
-      options: [
-        'Recognition and growth opportunities',
-        'Frequent criticism',
-        'Lack of communication',
-        'Unrealistic deadlines'
-      ],
-      answer: 0
-    },
-    {
-      q: 'What should a leader do during performance reviews?',
-      options: [
-        'Highlight only mistakes',
-        'Provide balanced feedback and set goals',
-        'Avoid discussing weaknesses',
-        'Focus only on numbers'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Which of the following is NOT a good leadership quality?',
-      options: [
-        'Empathy',
-        'Active listening',
-        'Consistency',
-        'Favoritism'
-      ],
-      answer: 3
-    },
-    {
-      q: 'What is the best way to handle conflicts within a team?',
-      options: [
-        'Ignore the conflict',
-        'Encourage open communication and resolution',
-        'Blame one side immediately',
-        'Avoid addressing it'
-      ],
-      answer: 1
-    },
-    {
-      q: 'Why is goal-setting important in management?',
-      options: [
-        'It provides clarity and direction',
-        'It avoids accountability',
-        'It makes employees confused',
-        'It reduces performance tracking'
-      ],
-      answer: 0
-    }
+    quiz: [
+      {
+        q: 'Which leadership style focuses on empowering team members to make decisions?',
+        options: [
+          'Autocratic',
+          'Democratic',
+          'Laissez-faire',
+          'Transformational'
+        ],
+        answer: 1
+      },
+      {
+        q: 'What is the primary purpose of delegation in management?',
+        options: [
+          'Reduce the leader’s workload only',
+          'Empower employees and improve efficiency',
+          'Avoid accountability',
+          'Micromanage tasks'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Which is the most effective way to deliver constructive feedback?',
+        options: [
+          'Be vague to avoid conflict',
+          'Focus only on negatives',
+          'Provide specific examples and suggest improvements',
+          'Compare with other employees'
+        ],
+        answer: 2
+      },
+      {
+        q: 'What motivates employees the MOST in the long run?',
+        options: [
+          'Recognition and growth opportunities',
+          'Frequent criticism',
+          'Lack of communication',
+          'Unrealistic deadlines'
+        ],
+        answer: 0
+      },
+      {
+        q: 'What should a leader do during performance reviews?',
+        options: [
+          'Highlight only mistakes',
+          'Provide balanced feedback and set goals',
+          'Avoid discussing weaknesses',
+          'Focus only on numbers'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Which of the following is NOT a good leadership quality?',
+        options: [
+          'Empathy',
+          'Active listening',
+          'Consistency',
+          'Favoritism'
+        ],
+        answer: 3
+      },
+      {
+        q: 'What is the best way to handle conflicts within a team?',
+        options: [
+          'Ignore the conflict',
+          'Encourage open communication and resolution',
+          'Blame one side immediately',
+          'Avoid addressing it'
+        ],
+        answer: 1
+      },
+      {
+        q: 'Why is goal-setting important in management?',
+        options: [
+          'It provides clarity and direction',
+          'It avoids accountability',
+          'It makes employees confused',
+          'It reduces performance tracking'
+        ],
+        answer: 0
+      }
     ],
   },
   {
